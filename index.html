@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chaman Kumar Singh — Data Analyst &amp; Business Analyst</title>
-<meta name="description" content="Chaman Kumar Singh is a Data Analyst and Business Analyst in New Delhi working with SQL, Python and Power BI, from requirements and root cause analysis to dashboards and KPI reporting.">
+<title>Chaman Kumar Singh — Business Analyst &amp; Data Analyst</title>
+<meta name="description" content="Chaman Kumar Singh is a Business Analyst and Data Analyst in New Delhi. Root cause analysis, requirements, SQL, Python and Power BI, shown through interactive case studies.">
 <meta name="theme-color" content="#07131f">
 <link rel="canonical" href="https://portfolio-five-sable-46.vercel.app/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Chaman Kumar Singh — Data Analyst & Business Analyst">
-<meta property="og:description" content="SQL, Python and Power BI work that backs a business decision.">
+<meta property="og:title" content="Chaman Kumar Singh — Business Analyst & Data Analyst">
+<meta property="og:description" content="Interactive case studies in root cause analysis, SQL, Python and Power BI.">
 <meta property="og:url" content="https://portfolio-five-sable-46.vercel.app/">
 <meta property="og:image" content="https://portfolio-five-sable-46.vercel.app/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,10 +19,8 @@
 <link rel="stylesheet" href="styles.css">
 <script>
   (function () {
-    try {
-      var t = localStorage.getItem('theme');
-      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
-    } catch (e) {}
+    try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    document.documentElement.classList.add('js');
   })();
 </script>
 </head>
@@ -36,6 +34,7 @@
       <ul class="nav__links" id="navLinks">
         <li><a href="#work">Work</a></li>
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#method">Method</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
         <li class="nav__indicator" aria-hidden="true"></li>
@@ -49,43 +48,127 @@
     </div>
   </div>
   <div class="mobile" id="mobileMenu" hidden>
-    <a href="#work">Work</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+    <a href="#work">Work</a><a href="#experience">Experience</a><a href="#method">Method</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
     <a href="resume/Chaman_Singh_Resume.pdf" download>Download resume</a>
   </div>
 </header>
 
 <main id="main">
 
-<!-- HERO -->
+<!-- ============ HERO ============ -->
 <section class="hero wrap" aria-labelledby="heroTitle">
   <div class="hero__text">
-    <p class="hero__roles">Data Analyst · Business Analyst · BI &amp; Reporting</p>
+    <p class="hero__roles">Business Analyst · Data Analyst · Business Intelligence</p>
     <h1 id="heroTitle" class="hero__name">Chaman<br>Kumar Singh</h1>
-    <p class="hero__lede">I turn messy business data into clear decisions, with SQL, Python and Power&nbsp;BI.</p>
+    <p class="hero__lede">I find out why a number moved, then build the SQL, Python and Power&nbsp;BI work that helps a team decide what to do about it.</p>
     <div class="hero__cta">
-      <a class="btn btn--solid" href="#work">See the work</a>
+      <a class="btn btn--solid" href="#work">See the work <span class="btn__arrow" aria-hidden="true">↓</span></a>
       <a class="btn btn--line" href="resume/Chaman_Singh_Resume.pdf" download>Download resume <span class="btn__meta">PDF</span></a>
     </div>
   </div>
 
-  <figure class="query" aria-labelledby="queryCap">
-    <div class="query__bar">
-      <span class="query__file">churn.sql</span>
-      <button class="query__run" id="runBtn" type="button">Run query</button>
-    </div>
-    <pre class="query__code" aria-hidden="true"><code id="sql"></code><span class="caret" id="caret"></span></pre>
-    <p class="sr-only">SQL query: average churn by contract type, from the customer churn project.</p>
-    <div class="query__result" id="result">
-      <div class="query__meta" id="resMeta">3 rows · 7,043 customers</div>
-      <ol class="bars" id="bars">
-        <li data-v="42.7"><span class="bars__k">Month-to-month</span><span class="bars__track"><span class="bars__fill"></span></span><span class="bars__v">42.7%</span></li>
-        <li data-v="11.3"><span class="bars__k">One year</span><span class="bars__track"><span class="bars__fill"></span></span><span class="bars__v">11.3%</span></li>
-        <li data-v="2.8"><span class="bars__k">Two year</span><span class="bars__track"><span class="bars__fill"></span></span><span class="bars__v">2.8%</span></li>
-      </ol>
-      <p class="query__note" id="note">Month-to-month customers churn about 15× more often than two-year customers.</p>
-    </div>
-    <figcaption id="queryCap" class="query__cap">Churn rate by contract type, from my <a href="https://github.com/chaman-23/churn-prediction">customer churn project</a>.</figcaption>
-  </figure>
+  <div class="scene" id="scene" aria-hidden="true">
+    <svg class="scene__svg" viewBox="0 0 560 500" role="presentation" focusable="false">
+      <defs>
+        <radialGradient id="sBack" cx=".5" cy=".45" r=".55"><stop offset="0" class="st-back1"/><stop offset="1" class="st-back2"/></radialGradient>
+        <linearGradient id="sHoodie" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f7486"/><stop offset="1" stop-color="#1b4c5b"/></linearGradient>
+        <linearGradient id="sSkin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dba07a"/><stop offset="1" stop-color="#bf8160"/></linearGradient>
+        <linearGradient id="sLid" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dfe8ec"/><stop offset="1" stop-color="#a7bac2"/></linearGradient>
+        <radialGradient id="sFaceGlow" cx=".5" cy=".75" r=".6"><stop offset="0" stop-color="#7fe3f7" stop-opacity=".55"/><stop offset="1" stop-color="#7fe3f7" stop-opacity="0"/></radialGradient>
+        <linearGradient id="sDesk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="st-desk1"/><stop offset="1" class="st-desk2"/></linearGradient>
+      </defs>
+
+      <!-- layer: backdrop -->
+      <g class="layer" data-depth="0.15">
+        <circle cx="290" cy="230" r="215" fill="url(#sBack)"/>
+        <g class="dots"><circle cx="70" cy="200" r="2"/><circle cx="520" cy="300" r="2"/><circle cx="470" cy="170" r="1.6"/><circle cx="110" cy="390" r="1.6"/><circle cx="420" cy="440" r="2"/></g>
+      </g>
+
+      <!-- layer: back panels -->
+      <g class="layer" data-depth="0.45">
+        <g class="panel panel--a float" style="--fd:0s">
+          <rect x="18" y="40" width="176" height="100" rx="12"/>
+          <text x="32" y="64" class="p-label">Payroll, 12 months</text>
+          <text x="32" y="84" class="p-value">₹53.5 L</text>
+          <path class="spark" id="heroSpark" d="M32 122"/>
+        </g>
+        <g class="panel panel--b float" style="--fd:1.2s">
+          <rect x="378" y="22" width="164" height="118" rx="12"/>
+          <text x="392" y="46" class="p-label">Data flow</text>
+          <path class="net-edge" id="netPath" d="M400 106 L440 86 L482 106 L522 86"/>
+          <circle class="net-node" cx="400" cy="106" r="6"/><circle class="net-node" cx="440" cy="86" r="6"/><circle class="net-node" cx="482" cy="106" r="6"/><circle class="net-node net-node--end" cx="522" cy="86" r="6"/>
+          <text x="386" y="130" class="p-tiny">source</text><text x="431" y="72" class="p-tiny">KPI</text><text x="472" y="130" class="p-tiny">RCA</text><text x="505" y="72" class="p-tiny">insight</text>
+          <circle class="packet" r="3.4"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#netPath"/></animateMotion></circle>
+        </g>
+      </g>
+
+      <!-- layer: the analyst -->
+      <g class="layer" data-depth="0.3">
+        <!-- chair -->
+        <rect x="198" y="196" width="164" height="210" rx="44" class="chair"/>
+        <!-- body -->
+        <g class="breathe">
+          <path d="M184 412 C184 330 212 296 280 290 C348 296 376 330 376 412 Z" fill="url(#sHoodie)"/>
+          <path d="M248 296 C258 318 302 318 312 296" fill="none" stroke="#173f4c" stroke-width="5" stroke-linecap="round"/>
+          <path d="M266 314 V340 M294 314 V340" stroke="#d9e6ea" stroke-width="2.4" stroke-linecap="round"/>
+          <rect x="268" y="262" width="24" height="34" rx="8" fill="#b97958"/>
+          <!-- head -->
+          <g class="head">
+            <ellipse cx="231" cy="222" rx="9" ry="13" fill="#c48563"/>
+            <ellipse cx="329" cy="222" rx="9" ry="13" fill="#c48563"/>
+            <ellipse cx="280" cy="216" rx="49" ry="55" fill="url(#sSkin)"/>
+            <ellipse cx="280" cy="236" rx="52" ry="40" fill="url(#sFaceGlow)" class="faceglow"/>
+            <path d="M231 210 C224 160 258 146 284 148 C316 149 338 168 330 212 C324 190 306 178 286 178 C264 177 244 186 231 210 Z" fill="#1c212b"/>
+            <path d="M246 178 C262 168 286 166 304 174 C290 172 272 176 262 186 Z" fill="#2a303c"/>
+            <path d="M252 198 Q263 193 274 197 M288 197 Q299 193 310 198" stroke="#1c212b" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <g class="eyes"><ellipse cx="264" cy="216" rx="3.8" ry="4.6" fill="#1c212b"/><ellipse cx="297" cy="216" rx="3.8" ry="4.6" fill="#1c212b"/></g>
+            <g class="glasses" fill="none" stroke="#0e2a36" stroke-width="2.6">
+              <rect x="248" y="203" width="32" height="25" rx="9"/><rect x="282" y="203" width="32" height="25" rx="9"/>
+              <path d="M280 213 h2"/>
+            </g>
+            <path class="glint" d="M254 208 l7 -3 M288 208 l7 -3" stroke="#bff1fb" stroke-width="2" stroke-linecap="round"/>
+            <path d="M280 222 q-4 12 1 15" stroke="#a96c4d" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <path d="M268 248 q12 8 25 0" stroke="#8e5640" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          </g>
+        </g>
+        <!-- arms + hands (hands peek beside the lid) -->
+        <path d="M214 318 Q190 360 196 384" stroke="url(#sHoodie)" stroke-width="32" stroke-linecap="round" fill="none"/>
+        <path d="M346 318 Q370 360 364 384" stroke="url(#sHoodie)" stroke-width="32" stroke-linecap="round" fill="none"/>
+        <ellipse class="hand hand--l" cx="200" cy="386" rx="15" ry="9" fill="#cf9271"/>
+        <ellipse class="hand hand--r" cx="360" cy="386" rx="15" ry="9" fill="#cf9271"/>
+        <!-- laptop -->
+        <path d="M200 392 L360 392 L351 272 L209 272 Z" fill="url(#sLid)"/>
+        <path d="M209 272 L351 272" stroke="#ffffff" stroke-opacity=".6" stroke-width="1.5"/>
+        <g class="lidlogo"><rect x="268" y="330" width="6" height="12" rx="1.5"/><rect x="277" y="324" width="6" height="18" rx="1.5"/><rect x="286" y="318" width="6" height="24" rx="1.5"/></g>
+        <rect x="176" y="389" width="208" height="10" rx="5" fill="#8ea4ad"/>
+        <!-- desk -->
+        <rect x="40" y="398" width="480" height="102" rx="14" fill="url(#sDesk)"/>
+        <path d="M54 399 H506" class="desk-edge"/>
+        <!-- mug -->
+        <g class="mug"><path d="M418 360 h36 v30 a8 8 0 0 1 -8 8 h-20 a8 8 0 0 1 -8 -8 Z"/><path d="M454 368 a9 9 0 0 1 0 18" fill="none" stroke-width="5"/></g>
+        <path class="steam" d="M430 350 q-6 -10 0 -20 q6 -10 0 -20"/><path class="steam steam--2" d="M442 352 q-6 -10 0 -20 q6 -10 0 -20"/>
+      </g>
+
+      <!-- layer: front panels -->
+      <g class="layer" data-depth="0.8">
+        <g class="panel panel--c float" style="--fd:.6s">
+          <rect x="410" y="196" width="138" height="128" rx="12"/>
+          <text x="424" y="220" class="p-label">Churn by contract</text>
+          <path d="M424 304 H534" class="axis"/>
+          <rect class="hb" x="430" y="244" width="22" height="60" rx="3"/>
+          <rect class="hb hb--2" x="466" y="288" width="22" height="16" rx="3"/>
+          <rect class="hb hb--2" x="502" y="300" width="22" height="4" rx="2"/>
+          <circle class="anomaly" cx="441" cy="244" r="15"/>
+          <text x="458" y="242" class="p-tag">42.7%</text>
+        </g>
+        <g class="panel panel--d float" style="--fd:2s">
+          <rect x="16" y="300" width="132" height="62" rx="12"/>
+          <text x="30" y="324" class="p-label">Churn rate</text>
+          <text x="30" y="348" class="p-value">26.5%</text>
+        </g>
+      </g>
+    </svg>
+  </div>
 </section>
 
 <section class="facts wrap" aria-label="Key facts">
@@ -97,147 +180,345 @@
   </dl>
 </section>
 
-<!-- ABOUT -->
-<section class="section wrap about" aria-labelledby="aboutH">
-  <p class="fig">Fig. 1</p>
-  <div>
-    <h2 id="aboutH" class="h2">About</h2>
-    <p class="about__body">I'm a Business Analyst and Data Analyst based in New Delhi. I work where business questions meet data: gathering requirements, mapping processes, finding root causes, and building the SQL, Python and Power BI work that backs a decision. I'm pursuing an MCA at IIT Patna and looking for Data Analyst, Business Analyst and BI roles.</p>
-  </div>
-</section>
-
-<!-- WORK -->
+<!-- ============ WORK ============ -->
 <section class="section wrap" id="work" aria-labelledby="workH">
-  <p class="fig">Fig. 2</p>
-  <div>
+  <header class="section__head">
     <h2 id="workH" class="h2">Selected work</h2>
+    <p class="section__lede">Three projects, each shown the way it actually works: a root cause engine, an HR dashboard and a churn analysis.</p>
+  </header>
 
-    <article class="case">
-      <div class="case__text">
-        <h3 class="case__title">AI Business Intelligence &amp; Root-Cause Engine</h3>
-        <p class="case__q">When a KPI drops, what actually caused it, and what should we do about it?</p>
-        <ul class="case__pts">
-          <li>Data pipeline with schema detection, field mapping, cleaning, validation, duplicate detection and data-quality scoring.</li>
-          <li>KPI and anomaly engine for Revenue, AOV, Margin, Return Rate, Churn and Inventory, drilling down by time, region, product, channel and customer.</li>
-          <li>An AI layer turns findings into Quick Win, Balanced and Strategic recommendations, each with expected impact, risks and success metrics.</li>
-        </ul>
-        <p class="case__stack">Python, SQL, Pandas, NumPy, REST APIs, AI/LLM</p>
-        <p class="case__links"><span class="muted">Code available on request</span></p>
-      </div>
-      <figure class="viz viz--flow" aria-label="Root cause analysis workflow with six steps">
-        <ol class="flow">
-          <li>Problem</li><li>Dimension analysis</li><li>Contribution</li><li>Evidence</li><li>Root cause</li><li>Business impact</li>
-        </ol>
-        <figcaption>The diagnostic workflow each finding goes through, with a confidence level at the end.</figcaption>
-      </figure>
-    </article>
-
-    <article class="case">
-      <div class="case__text">
-        <h3 class="case__title">Customer Churn Prediction</h3>
-        <p class="case__q">Which telecom customers are likely to leave, and why?</p>
-        <ul class="case__pts">
-          <li>Cleaned and encoded 7,043 customer records; overall churn is 26.5%.</li>
-          <li>Month-to-month contracts churn at 42.7%, against 2.8% on two-year contracts.</li>
-          <li>Class-weighted Logistic Regression with a saved preprocessing pipeline, served through a Flask app, with a Power BI dashboard on the outputs.</li>
-        </ul>
-        <p class="case__stack">Python, Pandas, scikit-learn, Flask, Power BI</p>
-        <p class="case__links"><a href="https://github.com/chaman-23/churn-prediction">View code on GitHub</a></p>
-      </div>
-      <figure class="viz viz--split" aria-label="Of 7,043 customers, 26.5 percent churned and 73.5 percent stayed">
-        <div class="split"><span class="split__a" style="--w:26.5%"></span><span class="split__b"></span></div>
-        <div class="split__legend"><span><b>26.5%</b> churned</span><span><b>73.5%</b> stayed</span></div>
-        <figcaption>7,043 customers in the dataset.</figcaption>
-      </figure>
-    </article>
-
-    <article class="case">
-      <div class="case__text">
-        <h3 class="case__title">Workforce &amp; Payroll Analytics</h3>
-        <p class="case__q">Where does payroll go, and how does pay track tenure?</p>
-        <ul class="case__pts">
-          <li>Normalised MySQL schema for departments, employees and salary transactions, with key and unique constraints.</li>
-          <li>Five analytical SQL views using RANK() and running totals.</li>
-          <li>A two-page Power BI dashboard with DAX measures: total payroll, average base salary, average tenure, payroll by department and salary against tenure.</li>
-        </ul>
-        <p class="case__stack">MySQL, SQL window functions, Power BI, DAX <span class="muted">· simulated HR dataset</span></p>
-        <p class="case__links"><a href="https://github.com/chaman-23/workforce-analytics">View code on GitHub</a></p>
-      </div>
-      <figure class="viz viz--schema" aria-label="Schema: departments and employees both link to salary transactions">
-        <svg viewBox="0 0 380 220" role="presentation">
-          <g class="tbl"><rect x="10" y="20" width="130" height="70" rx="6"/><text x="22" y="42" class="tbl__h">departments</text><text x="22" y="62">department_id</text><text x="22" y="78">department_name</text></g>
-          <g class="tbl"><rect x="10" y="130" width="130" height="80" rx="6"/><text x="22" y="152" class="tbl__h">employees</text><text x="22" y="172">employee_id</text><text x="22" y="188">department_id</text><text x="22" y="204">hiring_date</text></g>
-          <g class="tbl"><rect x="220" y="70" width="152" height="96" rx="6"/><text x="232" y="92" class="tbl__h">salary_transactions</text><text x="232" y="112">employee_id</text><text x="232" y="128">payment_month</text><text x="232" y="144">basic_pay, bonus</text><text x="232" y="160">deduction</text></g>
-          <path class="link" d="M75 90 V130"/>
-          <path class="link" d="M140 170 H180 V118 H220"/>
-        </svg>
-        <figcaption>Power BI reads from SQL views, not raw tables.</figcaption>
-      </figure>
-    </article>
-
-    <div class="minor">
-      <article class="minor__item">
-        <h3 class="minor__title"><a href="https://github.com/chaman-23/retail-sql-analytics">Retail SQL Analytics</a></h3>
-        <p>What drives revenue and repeat purchases? Models order and line-item grain separately so counts don't inflate, with CTEs and LAG() for month-over-month change. Includes automated tests.</p>
-        <p class="case__stack">SQL (SQLite), Python</p>
-      </article>
-      <article class="minor__item">
-        <h3 class="minor__title"><a href="https://github.com/chaman-23/csv-quality-audit">CSV Quality Audit</a></h3>
-        <p>Is this dataset fit to report on? Flags missing values, duplicates and type errors against a data contract. Includes automated tests.</p>
-        <p class="case__stack">Python</p>
-      </article>
+  <!-- PROJECT 1: AI BI & RCA -->
+  <article class="project" aria-labelledby="p1">
+    <div class="project__intro">
+      <p class="project__num">Project 1</p>
+      <h3 id="p1" class="project__title">AI Business Intelligence &amp; Root-Cause Engine</h3>
+      <p class="project__q">When a KPI drops, what actually caused it, and what should the team do?</p>
+      <p class="project__stack">Python · SQL · Pandas · NumPy · REST APIs · AI/LLM</p>
+      <p class="project__links"><span class="muted">Code available on request</span></p>
     </div>
+
+    <div class="rca" id="rca">
+      <div class="rca__head">
+        <p class="demo-note">Interactive walkthrough with illustrative sample numbers, showing how the engine reasons. These are not results from a real business.</p>
+        <div class="seg" role="tablist" aria-label="Choose a KPI" id="rcaKpis">
+          <button role="tab" aria-selected="true" data-kpi="revenue">Revenue</button>
+          <button role="tab" aria-selected="false" data-kpi="returns">Return rate</button>
+          <button role="tab" aria-selected="false" data-kpi="churn">Churn</button>
+        </div>
+      </div>
+      <div class="rca__grid">
+        <ol class="rca__steps" id="rcaSteps" aria-label="Diagnostic workflow">
+          <li data-step="0">Business problem</li>
+          <li data-step="1">KPI monitoring</li>
+          <li data-step="2">Anomaly detection</li>
+          <li data-step="3">Dimension analysis</li>
+          <li data-step="4">Evidence &amp; contribution</li>
+          <li data-step="5">Root cause</li>
+          <li data-step="6">Recommendations</li>
+        </ol>
+        <div class="rca__main">
+          <div class="rca__kpi">
+            <p class="rca__problem" id="rcaProblem"></p>
+            <svg class="rca__chart" id="rcaChart" viewBox="0 0 420 140" role="img" aria-labelledby="rcaChartTitle"><title id="rcaChartTitle">KPI trend</title></svg>
+          </div>
+          <div class="rca__dims">
+            <p class="rca__label" id="dimLabel">Where is the change concentrated? Pick a dimension.</p>
+            <div class="chips" role="tablist" aria-labelledby="dimLabel" id="rcaDims"></div>
+            <div class="contrib" id="rcaContrib" aria-live="polite"></div>
+          </div>
+          <div class="rca__actions">
+            <button class="btn btn--line btn--sm" id="rcaCause" type="button" disabled>Show root cause</button>
+          </div>
+          <div class="rca__cause" id="rcaCausePanel" hidden>
+            <div class="cause">
+              <p class="cause__label">Root cause <span class="pill" id="rcaConf"></span></p>
+              <p class="cause__text" id="rcaCauseText"></p>
+              <p class="cause__gap" id="rcaGap"></p>
+            </div>
+            <div class="recs">
+              <p class="cause__label">Recommendations</p>
+              <div class="seg seg--sm" role="tablist" aria-label="Recommendation tier" id="rcaRecTabs">
+                <button role="tab" aria-selected="true" data-tier="0">Quick win</button>
+                <button role="tab" aria-selected="false" data-tier="1">Balanced</button>
+                <button role="tab" aria-selected="false" data-tier="2">Strategic</button>
+              </div>
+              <p class="recs__text" id="rcaRec" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipe" aria-labelledby="pipeH">
+      <h4 id="pipeH" class="pipe__title">How data moves through the engine</h4>
+      <ol class="pipe__nodes" id="pipe">
+        <li><button type="button" data-i="0"><span class="pipe__n">Data sources</span></button></li>
+        <li><button type="button" data-i="1"><span class="pipe__n">Ingestion</span></button></li>
+        <li><button type="button" data-i="2"><span class="pipe__n">Validation</span></button></li>
+        <li><button type="button" data-i="3"><span class="pipe__n">Transformation</span></button></li>
+        <li><button type="button" data-i="4"><span class="pipe__n">KPI engine</span></button></li>
+        <li><button type="button" data-i="5"><span class="pipe__n">RCA</span></button></li>
+        <li><button type="button" data-i="6"><span class="pipe__n">Dashboard</span></button></li>
+      </ol>
+      <div class="pipe__detail" id="pipeDetail" aria-live="polite">
+        <p class="pipe__what" id="pipeWhat">Hover or select a stage to see what it does.</p>
+        <p class="pipe__tech" id="pipeTech"></p>
+      </div>
+    </div>
+
+    <ul class="project__pts">
+      <li>Pipeline with schema detection, field mapping, cleaning, validation, duplicate detection and data-quality scoring.</li>
+      <li>KPI and anomaly engine for Revenue, AOV, Margin, Return Rate, Churn and Inventory, drilling down by time, region, product, category, channel and customer.</li>
+      <li>An AI layer turns findings into Quick Win, Balanced and Strategic recommendations, each with expected impact, risks and success metrics.</li>
+    </ul>
+  </article>
+
+  <!-- PROJECT 2: WORKFORCE -->
+  <article class="project" aria-labelledby="p2">
+    <div class="project__intro">
+      <p class="project__num">Project 2</p>
+      <h3 id="p2" class="project__title">Workforce &amp; Payroll Analytics</h3>
+      <p class="project__q">Where does payroll go, and which teams carry the cost?</p>
+      <p class="project__stack">MySQL · SQL window functions · Power BI · DAX</p>
+      <p class="project__links"><a class="arrow-link" href="https://github.com/chaman-23/workforce-analytics">View code on GitHub <span aria-hidden="true">→</span></a></p>
+    </div>
+
+    <div class="dash" id="dash">
+      <p class="demo-note">Figures computed from the project's MySQL database: a simulated HR dataset of 10 employees, 4 departments and 12 months of payroll (Apr 2025 – Mar 2026).</p>
+      <div class="dash__filters">
+        <div class="seg seg--sm" role="tablist" aria-label="Department" id="dashDept"></div>
+        <div class="seg seg--sm" role="tablist" aria-label="Period" id="dashPeriod">
+          <button role="tab" aria-selected="true" data-p="12">12 months</button>
+          <button role="tab" aria-selected="false" data-p="6">Last 6</button>
+          <button role="tab" aria-selected="false" data-p="3">Last 3</button>
+        </div>
+      </div>
+      <dl class="kpis" id="dashKpis">
+        <div><dt>Employees</dt><dd data-k="employees">10</dd></div>
+        <div><dt>Net payroll</dt><dd data-k="net">₹53.46 L</dd></div>
+        <div><dt>Avg base salary</dt><dd data-k="avg">₹43,000</dd></div>
+        <div><dt>Bonus paid</dt><dd data-k="bonus">₹3.03 L</dd></div>
+      </dl>
+      <div class="dash__charts">
+        <figure class="dash__trend">
+          <figcaption>Monthly net payroll</figcaption>
+          <div class="chartbox"><svg id="dashTrend" viewBox="0 0 520 220" role="img" aria-label="Monthly net payroll line chart"></svg><div class="tip" id="dashTip" role="status" hidden></div></div>
+        </figure>
+        <figure class="dash__depts">
+          <figcaption>Payroll by department <span class="muted">· select a bar to filter</span></figcaption>
+          <ul class="dbars" id="dashBars"></ul>
+          <p class="dash__mix" id="dashMix"></p>
+        </figure>
+      </div>
+      <p class="dash__insight" id="dashInsight" aria-live="polite"></p>
+    </div>
+
+    <ul class="project__pts">
+      <li>Normalised MySQL schema for departments, employees and salary transactions, with key and unique constraints.</li>
+      <li>Five analytical SQL views using RANK() and running totals; Power BI reads the views, not raw tables.</li>
+      <li>Two-page Power BI dashboard with DAX measures for total payroll, average salary, tenure and department breakdowns.</li>
+    </ul>
+  </article>
+
+  <!-- PROJECT 3: CHURN -->
+  <article class="project" aria-labelledby="p3">
+    <div class="project__intro">
+      <p class="project__num">Project 3</p>
+      <h3 id="p3" class="project__title">Customer Churn Analysis</h3>
+      <p class="project__q">Which telecom customers are likely to leave, and why?</p>
+      <p class="project__stack">Python · Pandas · scikit-learn · Flask · Power BI · SQL</p>
+      <p class="project__links"><a class="arrow-link" href="https://github.com/chaman-23/churn-prediction">View code on GitHub <span aria-hidden="true">→</span></a></p>
+    </div>
+
+    <div class="ws" id="ws">
+      <div class="ws__head">
+        <p class="demo-note">Interactive demonstration. Results are precomputed from the project's dataset (7,043 customers in <code>tele_data.csv</code>, loaded as <code>telco_customers</code>). No live database is queried.</p>
+        <div class="seg seg--sm" role="tablist" aria-label="Analysis" id="wsTabs">
+          <button role="tab" aria-selected="true" data-s="contract">By contract</button>
+          <button role="tab" aria-selected="false" data-s="tenure">By tenure</button>
+          <button role="tab" aria-selected="false" data-s="payment">By payment method</button>
+        </div>
+      </div>
+      <div class="ws__panels">
+        <div class="ws__panel ws__sql">
+          <div class="ws__bar"><span>query.sql</span><button class="ws__run" id="wsRun" type="button">Run analysis</button></div>
+          <pre><code id="wsSql"></code></pre>
+          <div class="ws__progress" id="wsProg" aria-hidden="true"><span></span></div>
+        </div>
+        <div class="ws__panel ws__res">
+          <div class="ws__bar"><span>Results</span><span class="muted" id="wsCount"></span></div>
+          <table class="ws__table" id="wsTable"><caption class="sr-only">Query results</caption><thead><tr><th scope="col">Group</th><th scope="col">Customers</th><th scope="col">Churn %</th></tr></thead><tbody></tbody></table>
+        </div>
+        <div class="ws__panel ws__viz">
+          <div class="ws__bar"><span>Chart</span></div>
+          <ol class="wbars" id="wsBars"></ol>
+        </div>
+      </div>
+      <p class="ws__insight" id="wsInsight" aria-live="polite"></p>
+    </div>
+
+    <ul class="project__pts">
+      <li>Cleaned and encoded 7,043 customer records (median imputation for 11 missing values, one-hot encoding, scaling); overall churn is 26.5%.</li>
+      <li>Class-weighted Logistic Regression with a saved preprocessing pipeline, served through a Flask app, with a Power BI dashboard on the outputs.</li>
+    </ul>
+  </article>
+
+  <div class="minor">
+    <article class="minor__item">
+      <h3 class="minor__title"><a class="arrow-link" href="https://github.com/chaman-23/retail-sql-analytics">Retail SQL Analytics <span aria-hidden="true">→</span></a></h3>
+      <p>What drives revenue and repeat purchases? Models order and line-item grain separately so counts don't inflate, with CTEs and LAG() for month-over-month change. Includes automated tests.</p>
+      <p class="project__stack">SQL (SQLite) · Python</p>
+    </article>
+    <article class="minor__item">
+      <h3 class="minor__title"><a class="arrow-link" href="https://github.com/chaman-23/csv-quality-audit">CSV Quality Audit <span aria-hidden="true">→</span></a></h3>
+      <p>Is this dataset fit to report on? Flags missing values, duplicates and type errors against a data contract. Includes automated tests.</p>
+      <p class="project__stack">Python</p>
+    </article>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- ============ EXPERIENCE ============ -->
 <section class="section wrap" id="experience" aria-labelledby="expH">
-  <p class="fig">Fig. 3</p>
-  <div>
+  <header class="section__head">
     <h2 id="expH" class="h2">Experience</h2>
-    <ol class="timeline">
-      <li>
-        <p class="timeline__when">2026</p>
-        <h3 class="timeline__role">Business Analyst, IHRO India <span class="muted">(NGO), Delhi</span></h3>
-        <ul>
-          <li>Documented AS-IS and TO-BE grievance-handling flows and wrote a BRD with case categories, escalation rules and reporting fields for the technical team.</li>
-          <li>Led a root cause analysis of declining membership renewals and presented a prioritised action plan to leadership.</li>
-          <li>Analysed website and social data in Google Analytics 4 and Search Console, finding drop-off points and a JavaScript rendering issue limiting organic reach.</li>
-        </ul>
-      </li>
-      <li>
-        <p class="timeline__when">2025</p>
-        <h3 class="timeline__role">Co-Founder &amp; Business Lead, SmartHomie <span class="muted">Parul University Incubation Program</span></h3>
-        <ul>
-          <li>Ran primary market research with 100+ respondents and built the financial projections and pitch that secured ₹1.4 lakh in grant funding.</li>
-          <li>Ran requirement sessions with early users and prioritised the product backlog.</li>
-        </ul>
-      </li>
-      <li>
-        <p class="timeline__when">2023–2024</p>
-        <h3 class="timeline__role">Student Placement Coordinator, Parul University</h3>
-        <ul>
-          <li>Managed placement communication for 200+ students and coordinated with recruiters.</li>
-        </ul>
-      </li>
+  </header>
+
+  <ol class="journey" id="journey">
+    <!-- IHRO -->
+    <li class="journey__item">
+      <div class="journey__meta">
+        <p class="journey__when">2026</p>
+        <h3 class="journey__role">Business Analyst</h3>
+        <p class="journey__org">IHRO India (NGO), Delhi</p>
+      </div>
+      <div class="journey__body">
+        <div class="stages" id="stages">
+          <div class="stages__rail" role="tablist" aria-label="How I worked through the IHRO projects">
+            <span class="stages__line" aria-hidden="true"><span class="stages__fill" id="stagesFill"></span></span>
+            <button role="tab" aria-selected="true" aria-controls="st0" id="stt0"><span class="stages__dot"></span>Problem</button>
+            <button role="tab" aria-selected="false" aria-controls="st1" id="stt1"><span class="stages__dot"></span>Stakeholders</button>
+            <button role="tab" aria-selected="false" aria-controls="st2" id="stt2"><span class="stages__dot"></span>Requirements</button>
+            <button role="tab" aria-selected="false" aria-controls="st3" id="stt3"><span class="stages__dot"></span>Root cause</button>
+            <button role="tab" aria-selected="false" aria-controls="st4" id="stt4"><span class="stages__dot"></span>Recommendations</button>
+          </div>
+          <div class="stages__panels">
+            <div class="stage" role="tabpanel" id="st0" aria-labelledby="stt0">
+              <h4>What needed fixing</h4>
+              <ul><li>Grievances came in with gaps in case tracking, ownership and resolution follow-up.</li><li>Membership renewals were in sustained decline.</li><li>Organic reach from the website and social channels was weak.</li></ul>
+            </div>
+            <div class="stage" role="tabpanel" id="st1" aria-labelledby="stt1">
+              <h4>Listening before documenting</h4>
+              <ul><li>Ran stakeholder interviews to document the existing grievance intake process.</li><li>Held three stakeholder meetings on the renewal decline, alongside registration records.</li><li>Facilitated sessions that resolved conflicting priorities and aligned teams on one case registration workflow.</li></ul>
+            </div>
+            <div class="stage" role="tabpanel" id="st2" aria-labelledby="stt2">
+              <h4>Requirements the tech team could build from</h4>
+              <ul><li>Mapped AS-IS and TO-BE grievance flows (compare them below).</li><li>Wrote a BRD with case categories, escalation rules and reporting fields, delivered to the technical team.</li></ul>
+            </div>
+            <div class="stage" role="tabpanel" id="st3" aria-labelledby="stt3">
+              <h4>What was really driving the numbers</h4>
+              <ul><li>Membership renewals: no structured onboarding, no follow-up mechanism, an unclear value proposition, and duplicate or incomplete member records.</li><li>Digital outreach: analysed Google Analytics 4 and Search Console data and found a JavaScript single-page rendering issue limiting organic reach.</li></ul>
+            </div>
+            <div class="stage" role="tabpanel" id="st4" aria-labelledby="stt4">
+              <h4>From findings to action</h4>
+              <ul><li>Presented a prioritised action plan to IHRO leadership covering process fixes, communication improvements and data hygiene.</li><li>Documented remediation requirements for the rendering issue for the dev team.</li><li>Delivered a volunteer coordination case study with a proposed coordination model.</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="flowcmp" id="flowcmp">
+          <div class="flowcmp__head">
+            <h4>Grievance handling: before and after</h4>
+            <div class="seg seg--sm" role="tablist" aria-label="Process view" id="flowTabs">
+              <button role="tab" aria-selected="true" data-v="asis">AS-IS</button>
+              <button role="tab" aria-selected="false" data-v="tobe">TO-BE</button>
+            </div>
+          </div>
+          <p class="demo-note">Illustrative process based on the case study; simplified and not drawn from IHRO records. The categories, escalation rules and reporting fields are the BRD's real elements.</p>
+          <ol class="flow" id="flow" aria-live="polite"></ol>
+          <p class="flow__legend"><span class="lg lg--b"></span>Bottleneck <span class="lg lg--g"></span>Ownership gap <span class="lg lg--f"></span>Improvement</p>
+        </div>
+      </div>
+    </li>
+
+    <!-- SmartHomie -->
+    <li class="journey__item">
+      <div class="journey__meta">
+        <p class="journey__when">2025</p>
+        <h3 class="journey__role">Co-Founder &amp; Business Lead</h3>
+        <p class="journey__org">SmartHomie, Parul University Incubation Program</p>
+      </div>
+      <div class="journey__body">
+        <ol class="path" id="path">
+          <li><span class="path__step">Market research</span><span class="path__fact"><b data-count="100">100</b>+ respondents</span></li>
+          <li><span class="path__step">User needs</span><span class="path__fact">Requirement sessions with early users</span></li>
+          <li><span class="path__step">Validation</span><span class="path__fact">Market validation report</span></li>
+          <li><span class="path__step">Pitch</span><span class="path__fact">Financial projections and narrative</span></li>
+          <li><span class="path__step">Funding</span><span class="path__fact"><b>₹1.4 lakh</b> grant</span></li>
+        </ol>
+        <p class="journey__note">Also prioritised the product backlog for the prototype and reported milestones to the incubation panel.</p>
+      </div>
+    </li>
+
+    <!-- Placement -->
+    <li class="journey__item journey__item--small">
+      <div class="journey__meta">
+        <p class="journey__when">2023–2024</p>
+        <h3 class="journey__role">Student Placement Coordinator</h3>
+        <p class="journey__org">Parul University</p>
+      </div>
+      <div class="journey__body"><p>Managed placement communication for 200+ students and coordinated with recruiters.</p></div>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ METHOD ============ -->
+<section class="section wrap" id="method" aria-labelledby="methodH">
+  <header class="section__head">
+    <h2 id="methodH" class="h2">From business problem to actionable insight</h2>
+    <p class="section__lede">How I work, followed through one real example: the customer churn project.</p>
+  </header>
+  <div class="method">
+    <div class="method__stage" aria-hidden="true"><div class="method__viz" id="methodViz"></div></div>
+    <ol class="method__steps" id="methodSteps">
+      <li data-m="0"><p class="method__n">1</p><h3>Define the problem</h3><p>Which telecom customers are likely to leave, and why? A retention team needs a list it can act on, not just a model score.</p><div class="method__mini"></div></li>
+      <li data-m="1"><p class="method__n">2</p><h3>Collect data</h3><p>7,043 customers with 21 attributes: contract, tenure, services, charges and whether they churned.</p><div class="method__mini"></div></li>
+      <li data-m="2"><p class="method__n">3</p><h3>Clean &amp; validate</h3><p>Converted TotalCharges to numeric, filled the 11 missing values with the median, dropped the ID column and encoded categories.</p><div class="method__mini"></div></li>
+      <li data-m="3"><p class="method__n">4</p><h3>Analyse &amp; diagnose</h3><p>Churn is 26.5% overall but 42.7% on month-to-month contracts and 47.4% in a customer's first year.</p><div class="method__mini"></div></li>
+      <li data-m="4"><p class="method__n">5</p><h3>Recommend</h3><p>Focus retention effort on month-to-month customers in their first year, and test incentives to move them onto longer contracts.</p><div class="method__mini"></div></li>
+      <li data-m="5"><p class="method__n">6</p><h3>Measure outcomes</h3><p>Not measured in this project. To measure it, I'd track the churn rate of targeted customers against a comparable untargeted group over three months.</p><div class="method__mini"></div></li>
     </ol>
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- ============ SKILLS ============ -->
 <section class="section wrap" id="skills" aria-labelledby="skillsH">
-  <p class="fig">Fig. 4</p>
-  <div>
-    <h2 id="skillsH" class="h2">Skills</h2>
-    <dl class="skills">
-      <div><dt>Querying &amp; programming</dt><dd>SQL (MySQL, SQLite, BigQuery, window functions, CTEs), Python (Pandas, NumPy, scikit-learn)</dd></div>
-      <div><dt>Analytics &amp; BI</dt><dd>Power BI (DAX), Excel (pivot tables, VLOOKUP), Google Analytics 4, KPI reporting, data cleaning and validation</dd></div>
-      <div><dt>Business analysis</dt><dd>Requirements gathering, BRD writing, AS-IS / TO-BE mapping, gap analysis, root cause analysis, stakeholder management</dd></div>
-      <div><dt>Delivery &amp; tools</dt><dd>Agile / Scrum, Jira, Lucidchart, Git, Microsoft 365</dd></div>
-    </dl>
+  <header class="section__head">
+    <h2 id="skillsH" class="h2">Skills, and where I've used them</h2>
+  </header>
+  <div class="cmap" id="cmap">
+    <div class="cmap__cats" role="tablist" aria-label="Capability">
+      <button role="tab" aria-selected="true" data-c="ba">Business analysis</button>
+      <button role="tab" aria-selected="false" data-c="da">Data analytics</button>
+      <button role="tab" aria-selected="false" data-c="bi">Business intelligence</button>
+      <button role="tab" aria-selected="false" data-c="dev">Development &amp; APIs</button>
+    </div>
+    <div class="cmap__mid"><div class="cmap__tools" id="cmapTools" aria-live="polite"></div><p class="cmap__how" id="cmapHow" aria-live="polite"></p></div>
+    <ul class="cmap__work" id="cmapWork">
+      <li data-w="ihro">IHRO case study</li>
+      <li data-w="smart">SmartHomie</li>
+      <li data-w="rca">AI BI &amp; RCA Engine</li>
+      <li data-w="churn">Customer Churn</li>
+      <li data-w="wf">Workforce Analytics</li>
+      <li data-w="retail">Retail SQL</li>
+      <li data-w="csv">CSV Quality Audit</li>
+      <li data-w="pl300">PL-300 certification</li>
+    </ul>
+    <svg class="cmap__lines" id="cmapLines" aria-hidden="true"></svg>
+  </div>
 
-    <h2 class="h2 h2--sub">Education &amp; certification</h2>
-    <dl class="edu">
+  <div class="edu">
+    <h3 class="h3">Education &amp; certification</h3>
+    <dl>
       <div><dt>MCA, IIT Patna (online)</dt><dd>Expected April 2028</dd></div>
       <div><dt>BCA, Cloud Computing, minor in AI · Parul University, Vadodara</dt><dd>CGPA 7.36 / 10</dd></div>
       <div><dt>Microsoft Certified: Power BI Data Analyst Associate (PL-300)</dt><dd>Certification</dd></div>
@@ -245,22 +526,30 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ============ CONTACT ============ -->
 <section class="section wrap contact" id="contact" aria-labelledby="contactH">
-  <p class="fig">Fig. 5</p>
-  <div>
-    <h2 id="contactH" class="contact__h">Let's talk about data.</h2>
-    <p class="contact__lede">I'm looking for Data Analyst, Business Analyst and BI roles. Email is the quickest way to reach me.</p>
-    <div class="contact__row">
-      <button class="btn btn--solid" id="copyEmail" type="button" data-email="rudra23032004@gmail.com">Copy email address</button>
-      <a class="btn btn--line" href="mailto:rudra23032004@gmail.com">rudra23032004@gmail.com</a>
+  <div class="contact__grid">
+    <div>
+      <h2 id="contactH" class="contact__h">Let's turn data into direction.</h2>
+      <p class="contact__lede">I'm looking for Business Analyst, Data Analyst and BI roles. Email is the quickest way to reach me.</p>
+      <div class="contact__row">
+        <button class="btn btn--solid" id="copyEmail" type="button" data-email="rudra23032004@gmail.com">Copy email address</button>
+        <a class="btn btn--line" href="mailto:rudra23032004@gmail.com">rudra23032004@gmail.com</a>
+      </div>
+      <p class="toast" id="toast" role="status" aria-live="polite"></p>
+      <ul class="contact__links">
+        <li><a class="arrow-link" href="https://www.linkedin.com/in/chaman-singh-5a67aa2b6">LinkedIn <span aria-hidden="true">→</span></a></li>
+        <li><a class="arrow-link" href="https://github.com/chaman-23">GitHub <span aria-hidden="true">→</span></a></li>
+        <li><a class="arrow-link" href="resume/Chaman_Singh_Resume.pdf" download>Resume (PDF) <span aria-hidden="true">↓</span></a></li>
+      </ul>
     </div>
-    <p class="toast" id="toast" role="status" aria-live="polite"></p>
-    <ul class="contact__links">
-      <li><a href="https://www.linkedin.com/in/chaman-singh-5a67aa2b6">LinkedIn</a></li>
-      <li><a href="https://github.com/chaman-23">GitHub</a></li>
-      <li><a href="resume/Chaman_Singh_Resume.pdf" download>Resume (PDF)</a></li>
-    </ul>
+    <svg class="net" id="net" viewBox="0 0 360 300" aria-hidden="true">
+      <path class="net__e" d="M70 80 L200 60"/><path class="net__e" d="M200 60 L290 170"/><path class="net__e" d="M290 170 L130 230"/><path class="net__e" d="M130 230 L70 80"/><path class="net__e net__e--x" d="M70 80 L290 170"/>
+      <g class="net__n" style="--sx:-60px;--sy:40px"><circle cx="70" cy="80" r="9"/><text x="70" y="58">Business</text></g>
+      <g class="net__n" style="--sx:50px;--sy:-30px"><circle cx="200" cy="60" r="9"/><text x="200" y="38">Data</text></g>
+      <g class="net__n" style="--sx:40px;--sy:50px"><circle cx="290" cy="170" r="9"/><text x="290" y="200">Insight</text></g>
+      <g class="net__n" style="--sx:-40px;--sy:40px"><circle cx="130" cy="230" r="9"/><text x="130" y="260">Collaboration</text></g>
+    </svg>
   </div>
 </section>
 
@@ -271,6 +560,11 @@
   <a href="#top">Back to top</a>
 </footer>
 
-<script src="main.js" defer></script>
+<script src="js/data.js" defer></script>
+<script src="js/core.js" defer></script>
+<script src="js/hero.js" defer></script>
+<script src="js/experience.js" defer></script>
+<script src="js/projects.js" defer></script>
+<script src="js/sections.js" defer></script>
 </body>
 </html>
