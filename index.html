@@ -1,1054 +1,276 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chaman Singh — Data Analyst</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --cream: #f5f0e8;
-    --warm-white: #faf7f2;
-    --parchment: #ede8dc;
-    --ink: #1a1510;
-    --brown: #3d2e1e;
-    --rust: #c4541a;
-    --amber: #d97c1a;
-    --sage: #4a6741;
-    --clay: #8b4e2a;
-    --muted: #7a6e62;
-    --border: #cfc8bb;
-    --card: #f0ebe0;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Outfit', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    overflow-x: hidden;
-  }
-
-  /* ─── TEXTURE OVERLAY ─── */
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 9999; opacity: 0.6;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    padding: 1.4rem 5rem;
-    display: flex; justify-content: space-between; align-items: center;
-    z-index: 100;
-    background: rgba(245,240,232,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: 1.3rem;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-  }
-  .nav-logo em { color: var(--rust); font-style: italic; }
-
-  .nav-links {
-    display: flex; gap: 2.5rem; list-style: none;
-  }
-  .nav-links a {
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--rust); }
-
-  /* ─── HERO ─── */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 80px;
-    overflow: hidden;
-  }
-
-  .hero-left {
-    padding: 6rem 3rem 6rem 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-right: 1px solid var(--border);
-    position: relative;
-  }
-
-  .hero-left::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--rust), var(--amber), var(--sage));
-  }
-
-  .issue-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--rust);
-    background: rgba(196,84,26,0.1);
-    border: 1px solid rgba(196,84,26,0.2);
-    display: inline-block;
-    padding: 0.35rem 0.9rem;
-    border-radius: 2px;
-    margin-bottom: 2.5rem;
-    animation: fadeUp 0.7s ease both;
-  }
-
-  .hero-name {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: clamp(3.8rem, 7vw, 6.5rem);
-    line-height: 0.92;
-    letter-spacing: -0.03em;
-    color: var(--ink);
-    margin-bottom: 0.4rem;
-    animation: fadeUp 0.7s 0.1s ease both;
-  }
-
-  .hero-name .italic-line {
-    display: block;
-    font-style: italic;
-    color: var(--rust);
-    font-weight: 400;
-  }
-
-  .hero-rule {
-    width: 60px; height: 2px;
-    background: var(--ink);
-    margin: 2rem 0;
-    animation: fadeUp 0.7s 0.2s ease both;
-  }
-
-  .hero-tagline {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.15rem;
-    color: var(--brown);
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.7s 0.25s ease both;
-  }
-
-  .hero-desc {
-    font-size: 0.88rem;
-    line-height: 1.85;
-    color: var(--muted);
-    max-width: 440px;
-    margin-bottom: 3rem;
-    animation: fadeUp 0.7s 0.3s ease both;
-  }
-
-  .hero-actions {
-    display: flex; gap: 1rem; flex-wrap: wrap;
-    animation: fadeUp 0.7s 0.4s ease both;
-  }
-
-  .btn {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.85rem 2rem;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 2px;
-    transition: all 0.25s;
-    cursor: pointer;
-  }
-
-  .btn-primary {
-    background: var(--ink);
-    color: var(--cream);
-  }
-  .btn-primary:hover {
-    background: var(--rust);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(196,84,26,0.25);
-  }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--ink);
-    border: 1.5px solid var(--ink);
-  }
-  .btn-ghost:hover {
-    background: var(--ink);
-    color: var(--cream);
-    transform: translateY(-2px);
-  }
-
-  /* ─── HERO RIGHT ─── */
-  .hero-right {
-    display: flex;
-    flex-direction: column;
-    background: var(--warm-white);
-  }
-
-  .hero-right-top {
-    flex: 1;
-    padding: 5rem 4rem 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-  }
-
-  .big-number {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: 8rem;
-    line-height: 1;
-    color: var(--parchment);
-    position: absolute;
-    top: 2rem; right: 3rem;
-    letter-spacing: -0.05em;
-    user-select: none;
-  }
-
-  .edu-block {
-    position: relative; z-index: 1;
-  }
-
-  .edu-micro {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.75rem;
-  }
-
-  .edu-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 0.25rem;
-  }
-
-  .edu-sub {
-    font-size: 0.82rem;
-    color: var(--muted);
-    margin-bottom: 2rem;
-  }
-
-  .cgpa-track {
-    background: var(--border);
-    height: 5px; border-radius: 100px;
-    overflow: hidden;
-    margin-bottom: 0.6rem;
-  }
-
-  .cgpa-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--rust), var(--amber));
-    border-radius: 100px;
-    width: 0;
-    transition: width 1.6s cubic-bezier(0.16,1,0.3,1);
-  }
-
-  .cgpa-label {
-    display: flex;
-    justify-content: space-between;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--muted);
-  }
-
-  .cgpa-score {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: 3.5rem;
-    color: var(--rust);
-    line-height: 1;
-    margin-top: 1rem;
-  }
-
-  .hero-right-bottom {
-    padding: 2rem 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  .contact-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .ci-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .ci-val {
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--ink);
-  }
-  .ci-val a { color: var(--rust); text-decoration: none; }
-  .ci-val a:hover { text-decoration: underline; }
-
-  /* ─── SECTION BASE ─── */
-  section { padding: 6rem 5rem; }
-
-  .sec-eyebrow {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--rust);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.75rem;
-  }
-  .sec-eyebrow::after {
-    content: '';
-    flex: 1;
-    max-width: 40px;
-    height: 1px;
-    background: var(--rust);
-  }
-
-  .sec-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: clamp(2.2rem, 4vw, 3.5rem);
-    letter-spacing: -0.03em;
-    line-height: 1.05;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-  }
-  .sec-title em { color: var(--rust); font-style: italic; }
-
-  /* ─── SKILLS ─── */
-  #skills {
-    background: var(--warm-white);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .skills-layout {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 5rem;
-    margin-top: 1rem;
-    align-items: start;
-  }
-
-  .skills-intro {
-    font-size: 0.85rem;
-    line-height: 1.85;
-    color: var(--muted);
-    padding-top: 1.5rem;
-  }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 2.5rem;
-  }
-
-  .skill-item {
-    background: var(--warm-white);
-    padding: 1.8rem;
-    display: flex;
-    gap: 1.2rem;
-    align-items: flex-start;
-    transition: background 0.2s;
-  }
-  .skill-item:hover { background: var(--parchment); }
-
-  .skill-num {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--border);
-    padding-top: 0.15rem;
-    flex-shrink: 0;
-    transition: color 0.2s;
-  }
-  .skill-item:hover .skill-num { color: var(--rust); }
-
-  .skill-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 0.2rem;
-  }
-
-  .skill-desc {
-    font-size: 0.73rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  /* ─── PROJECTS ─── */
-  #projects { background: var(--cream); }
-
-  .projects-list {
-    margin-top: 3.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 1px solid var(--border);
-  }
-
-  .project-row {
-    display: grid;
-    grid-template-columns: 72px 1fr auto;
-    gap: 0;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.2s;
-    overflow: hidden;
-  }
-  .project-row:last-child { border-bottom: none; }
-  .project-row:hover { background: var(--warm-white); }
-
-  .proj-num-col {
-    background: var(--ink);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2.5rem 1rem;
-    border-right: 1px solid rgba(255,255,255,0.1);
-    transition: background 0.25s;
-  }
-  .project-row:hover .proj-num-col { background: var(--rust); }
-
-  .proj-number {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.9rem;
-    color: rgba(245,240,232,0.6);
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    letter-spacing: 0.15em;
-    font-weight: 700;
-  }
-
-  .proj-body {
-    padding: 2.5rem 3rem;
-    border-right: 1px solid var(--border);
-  }
-
-  .proj-tags {
-    display: flex; flex-wrap: wrap; gap: 0.4rem;
-    margin-bottom: 1rem;
-  }
-
-  .proj-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--rust);
-    background: rgba(196,84,26,0.08);
-    border: 1px solid rgba(196,84,26,0.18);
-    padding: 0.22rem 0.55rem;
-    border-radius: 2px;
-  }
-
-  .proj-tag.green {
-    color: var(--sage);
-    background: rgba(74,103,65,0.08);
-    border-color: rgba(74,103,65,0.18);
-  }
-
-  .proj-tag.amber {
-    color: var(--clay);
-    background: rgba(139,78,42,0.08);
-    border-color: rgba(139,78,42,0.18);
-  }
-
-  .proj-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 1.35rem;
-    color: var(--ink);
-    margin-bottom: 0.7rem;
-  }
-
-  .proj-desc {
-    font-size: 0.82rem;
-    line-height: 1.8;
-    color: var(--muted);
-    max-width: 540px;
-  }
-
-  .proj-metrics-col {
-    padding: 2.5rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.2rem;
-    min-width: 160px;
-    background: var(--parchment);
-    border-left: 1px solid var(--border);
-  }
-
-  .p-metric { text-align: right; }
-
-  .p-metric-val {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: 1.6rem;
-    color: var(--ink);
-    display: block;
-    line-height: 1;
-  }
-
-  .p-metric-name {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 0.15rem;
-  }
-
-  /* ─── ABOUT ─── */
-  #about {
-    background: var(--parchment);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    margin-top: 3rem;
-    align-items: start;
-  }
-
-  .about-body {
-    font-size: 0.87rem;
-    line-height: 1.9;
-    color: var(--brown);
-  }
-
-  .about-body p + p { margin-top: 1.2rem; }
-
-  blockquote {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: var(--rust);
-    border-left: 3px solid var(--rust);
-    padding: 0.8rem 0 0.8rem 1.5rem;
-    margin: 2rem 0;
-  }
-
-  .about-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 1px solid var(--border);
-  }
-
-  .about-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.1rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    background: var(--warm-white);
-    transition: background 0.2s;
-  }
-  .about-row:last-child { border-bottom: none; }
-  .about-row:hover { background: var(--cream); }
-
-  .ar-key {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .ar-val {
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--ink);
-    text-align: right;
-  }
-  .ar-val a { color: var(--rust); text-decoration: none; }
-  .ar-val a:hover { text-decoration: underline; }
-  .ar-val.open { color: var(--sage); font-weight: 600; }
-
-  /* ─── CONTACT ─── */
-  #contact { background: var(--ink); }
-
-  #contact .sec-eyebrow { color: var(--amber); }
-  #contact .sec-eyebrow::after { background: var(--amber); }
-  #contact .sec-title { color: var(--cream); }
-  #contact .sec-title em { color: var(--amber); }
-
-  .contact-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    margin-top: 3rem;
-    align-items: center;
-  }
-
-  .contact-text {
-    font-size: 0.87rem;
-    line-height: 1.9;
-    color: rgba(245,240,232,0.6);
-  }
-
-  .contact-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    padding: 1.4rem 2rem;
-    border: 1px solid rgba(245,240,232,0.15);
-    text-decoration: none;
-    color: var(--cream);
-    transition: all 0.25s;
-    border-radius: 2px;
-  }
-  .contact-link:hover {
-    background: rgba(245,240,232,0.06);
-    border-color: var(--amber);
-    transform: translateX(6px);
-  }
-  .contact-link-icon {
-    width: 40px; height: 40px;
-    background: rgba(245,240,232,0.08);
-    border-radius: 2px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem;
-    flex-shrink: 0;
-  }
-  .contact-link-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(245,240,232,0.4);
-    margin-bottom: 0.15rem;
-  }
-  .contact-link-val {
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--brown);
-    padding: 1.8rem 5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
-    color: rgba(245,240,232,0.4);
-  }
-  footer span:first-child { color: rgba(245,240,232,0.6); }
-
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.7s, transform 0.7s;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ─── SCROLLBAR ─── */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--cream); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--rust); }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-left { padding: 5rem 1.5rem 3rem; }
-    .hero-right { display: none; }
-    section { padding: 4rem 1.5rem; }
-    .skills-layout { grid-template-columns: 1fr; gap: 2rem; }
-    .skills-grid { grid-template-columns: 1fr; }
-    .about-grid, .contact-body { grid-template-columns: 1fr; gap: 2.5rem; }
-    .project-row { grid-template-columns: 48px 1fr; }
-    .proj-metrics-col { display: none; }
-    footer { flex-direction: column; gap: 0.4rem; text-align: center; padding: 1.5rem; }
-  }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chaman Kumar Singh — Data Analyst &amp; Business Analyst</title>
+<meta name="description" content="Chaman Kumar Singh is a Data Analyst and Business Analyst in New Delhi working with SQL, Python and Power BI, from requirements and root cause analysis to dashboards and KPI reporting.">
+<meta name="theme-color" content="#07131f">
+<link rel="canonical" href="https://portfolio-five-sable-46.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chaman Kumar Singh — Data Analyst & Business Analyst">
+<meta property="og:description" content="SQL, Python and Power BI work that backs a business decision.">
+<meta property="og:url" content="https://portfolio-five-sable-46.vercel.app/">
+<meta property="og:image" content="https://portfolio-five-sable-46.vercel.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">Chaman <em>Singh</em></div>
-  <ul class="nav-links">
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<header class="nav" id="top">
+  <div class="nav__inner wrap">
+    <a class="nav__name" href="#top">Chaman Kumar Singh</a>
+    <nav aria-label="Sections">
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="nav__indicator" aria-hidden="true"></li>
+      </ul>
+    </nav>
+    <div class="nav__tools">
+      <button class="theme" id="themeToggle" type="button" aria-label="Switch to light theme">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path class="sun" d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path class="moon" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+    </div>
+  </div>
+  <div class="mobile" id="mobileMenu" hidden>
+    <a href="#work">Work</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+    <a href="resume/Chaman_Singh_Resume.pdf" download>Download resume</a>
+  </div>
+</header>
+
+<main id="main">
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-left">
-    <div class="issue-tag">Data Analyst · Available Now</div>
-    <h1 class="hero-name">
-      Chaman
-      <span class="italic-line">Singh.</span>
-    </h1>
-    <div class="hero-rule"></div>
-    <p class="hero-tagline">Turning numbers into narratives.</p>
-    <p class="hero-desc">BCA graduate with a sharp eye for data storytelling. Fluent in Python, SQL, and Power BI — building dashboards and models that help businesses make smarter decisions.</p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn btn-primary">See My Work →</a>
-      <a href="#contact" class="btn btn-ghost">Contact Me</a>
+<section class="hero wrap" aria-labelledby="heroTitle">
+  <div class="hero__text">
+    <p class="hero__roles">Data Analyst · Business Analyst · BI &amp; Reporting</p>
+    <h1 id="heroTitle" class="hero__name">Chaman<br>Kumar Singh</h1>
+    <p class="hero__lede">I turn messy business data into clear decisions, with SQL, Python and Power&nbsp;BI.</p>
+    <div class="hero__cta">
+      <a class="btn btn--solid" href="#work">See the work</a>
+      <a class="btn btn--line" href="resume/Chaman_Singh_Resume.pdf" download>Download resume <span class="btn__meta">PDF</span></a>
     </div>
   </div>
 
-  <div class="hero-right">
-    <div class="hero-right-top">
-      <div class="big-number">7.3</div>
-      <div class="edu-block">
-        <div class="edu-micro">Education</div>
-        <div class="edu-title">Bachelor of Computer Applications</div>
-        <div class="edu-sub">BCA Graduate · 2024</div>
-        <div class="cgpa-track">
-          <div class="cgpa-fill" id="cgpaBar"></div>
-        </div>
-        <div class="cgpa-label">
-          <span>CGPA</span>
-          <span>/ 10.0</span>
-        </div>
-        <div class="cgpa-score">7.3</div>
-      </div>
+  <figure class="query" aria-labelledby="queryCap">
+    <div class="query__bar">
+      <span class="query__file">churn.sql</span>
+      <button class="query__run" id="runBtn" type="button">Run query</button>
     </div>
-    <div class="hero-right-bottom">
-      <div class="contact-item">
-        <span class="ci-label">Phone</span>
-        <span class="ci-val">+91 9310354163</span>
-      </div>
-      <div class="contact-item">
-        <span class="ci-label">LinkedIn</span>
-        <span class="ci-val"><a href="https://linkedin.com/in/chaman-singh-5a67aa2b6" target="_blank">chaman-singh ↗</a></span>
-      </div>
-      <div class="contact-item">
-        <span class="ci-label">Focus</span>
-        <span class="ci-val">Data Analytics & BI</span>
-      </div>
-      <div class="contact-item">
-        <span class="ci-label">Status</span>
-        <span class="ci-val" style="color:var(--sage);font-weight:600;">Open to Work ●</span>
-      </div>
+    <pre class="query__code" aria-hidden="true"><code id="sql"></code><span class="caret" id="caret"></span></pre>
+    <p class="sr-only">SQL query: average churn by contract type, from the customer churn project.</p>
+    <div class="query__result" id="result">
+      <div class="query__meta" id="resMeta">3 rows · 7,043 customers</div>
+      <ol class="bars" id="bars">
+        <li data-v="42.7"><span class="bars__k">Month-to-month</span><span class="bars__track"><span class="bars__fill"></span></span><span class="bars__v">42.7%</span></li>
+        <li data-v="11.3"><span class="bars__k">One year</span><span class="bars__track"><span class="bars__fill"></span></span><span class="bars__v">11.3%</span></li>
+        <li data-v="2.8"><span class="bars__k">Two year</span><span class="bars__track"><span class="bars__fill"></span></span><span class="bars__v">2.8%</span></li>
+      </ol>
+      <p class="query__note" id="note">Month-to-month customers churn about 15× more often than two-year customers.</p>
     </div>
+    <figcaption id="queryCap" class="query__cap">Churn rate by contract type, from my <a href="https://github.com/chaman-23/churn-prediction">customer churn project</a>.</figcaption>
+  </figure>
+</section>
+
+<section class="facts wrap" aria-label="Key facts">
+  <dl class="facts__list">
+    <div><dt>Grant secured</dt><dd>₹<span data-count="1.4" data-dec="1">1.4</span> lakh</dd></div>
+    <div><dt>People researched</dt><dd><span data-count="100">100</span>+</dd></div>
+    <div><dt>Customers analysed</dt><dd><span data-count="7043" data-sep="1">7,043</span></dd></div>
+    <div><dt>Certified</dt><dd>PL-300</dd></div>
+  </dl>
+</section>
+
+<!-- ABOUT -->
+<section class="section wrap about" aria-labelledby="aboutH">
+  <p class="fig">Fig. 1</p>
+  <div>
+    <h2 id="aboutH" class="h2">About</h2>
+    <p class="about__body">I'm a Business Analyst and Data Analyst based in New Delhi. I work where business questions meet data: gathering requirements, mapping processes, finding root causes, and building the SQL, Python and Power BI work that backs a decision. I'm pursuing an MCA at IIT Patna and looking for Data Analyst, Business Analyst and BI roles.</p>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="section wrap" id="work" aria-labelledby="workH">
+  <p class="fig">Fig. 2</p>
+  <div>
+    <h2 id="workH" class="h2">Selected work</h2>
+
+    <article class="case">
+      <div class="case__text">
+        <h3 class="case__title">AI Business Intelligence &amp; Root-Cause Engine</h3>
+        <p class="case__q">When a KPI drops, what actually caused it, and what should we do about it?</p>
+        <ul class="case__pts">
+          <li>Data pipeline with schema detection, field mapping, cleaning, validation, duplicate detection and data-quality scoring.</li>
+          <li>KPI and anomaly engine for Revenue, AOV, Margin, Return Rate, Churn and Inventory, drilling down by time, region, product, channel and customer.</li>
+          <li>An AI layer turns findings into Quick Win, Balanced and Strategic recommendations, each with expected impact, risks and success metrics.</li>
+        </ul>
+        <p class="case__stack">Python, SQL, Pandas, NumPy, REST APIs, AI/LLM</p>
+        <p class="case__links"><span class="muted">Code available on request</span></p>
+      </div>
+      <figure class="viz viz--flow" aria-label="Root cause analysis workflow with six steps">
+        <ol class="flow">
+          <li>Problem</li><li>Dimension analysis</li><li>Contribution</li><li>Evidence</li><li>Root cause</li><li>Business impact</li>
+        </ol>
+        <figcaption>The diagnostic workflow each finding goes through, with a confidence level at the end.</figcaption>
+      </figure>
+    </article>
+
+    <article class="case">
+      <div class="case__text">
+        <h3 class="case__title">Customer Churn Prediction</h3>
+        <p class="case__q">Which telecom customers are likely to leave, and why?</p>
+        <ul class="case__pts">
+          <li>Cleaned and encoded 7,043 customer records; overall churn is 26.5%.</li>
+          <li>Month-to-month contracts churn at 42.7%, against 2.8% on two-year contracts.</li>
+          <li>Class-weighted Logistic Regression with a saved preprocessing pipeline, served through a Flask app, with a Power BI dashboard on the outputs.</li>
+        </ul>
+        <p class="case__stack">Python, Pandas, scikit-learn, Flask, Power BI</p>
+        <p class="case__links"><a href="https://github.com/chaman-23/churn-prediction">View code on GitHub</a></p>
+      </div>
+      <figure class="viz viz--split" aria-label="Of 7,043 customers, 26.5 percent churned and 73.5 percent stayed">
+        <div class="split"><span class="split__a" style="--w:26.5%"></span><span class="split__b"></span></div>
+        <div class="split__legend"><span><b>26.5%</b> churned</span><span><b>73.5%</b> stayed</span></div>
+        <figcaption>7,043 customers in the dataset.</figcaption>
+      </figure>
+    </article>
+
+    <article class="case">
+      <div class="case__text">
+        <h3 class="case__title">Workforce &amp; Payroll Analytics</h3>
+        <p class="case__q">Where does payroll go, and how does pay track tenure?</p>
+        <ul class="case__pts">
+          <li>Normalised MySQL schema for departments, employees and salary transactions, with key and unique constraints.</li>
+          <li>Five analytical SQL views using RANK() and running totals.</li>
+          <li>A two-page Power BI dashboard with DAX measures: total payroll, average base salary, average tenure, payroll by department and salary against tenure.</li>
+        </ul>
+        <p class="case__stack">MySQL, SQL window functions, Power BI, DAX <span class="muted">· simulated HR dataset</span></p>
+        <p class="case__links"><a href="https://github.com/chaman-23/workforce-analytics">View code on GitHub</a></p>
+      </div>
+      <figure class="viz viz--schema" aria-label="Schema: departments and employees both link to salary transactions">
+        <svg viewBox="0 0 380 220" role="presentation">
+          <g class="tbl"><rect x="10" y="20" width="130" height="70" rx="6"/><text x="22" y="42" class="tbl__h">departments</text><text x="22" y="62">department_id</text><text x="22" y="78">department_name</text></g>
+          <g class="tbl"><rect x="10" y="130" width="130" height="80" rx="6"/><text x="22" y="152" class="tbl__h">employees</text><text x="22" y="172">employee_id</text><text x="22" y="188">department_id</text><text x="22" y="204">hiring_date</text></g>
+          <g class="tbl"><rect x="220" y="70" width="152" height="96" rx="6"/><text x="232" y="92" class="tbl__h">salary_transactions</text><text x="232" y="112">employee_id</text><text x="232" y="128">payment_month</text><text x="232" y="144">basic_pay, bonus</text><text x="232" y="160">deduction</text></g>
+          <path class="link" d="M75 90 V130"/>
+          <path class="link" d="M140 170 H180 V118 H220"/>
+        </svg>
+        <figcaption>Power BI reads from SQL views, not raw tables.</figcaption>
+      </figure>
+    </article>
+
+    <div class="minor">
+      <article class="minor__item">
+        <h3 class="minor__title"><a href="https://github.com/chaman-23/retail-sql-analytics">Retail SQL Analytics</a></h3>
+        <p>What drives revenue and repeat purchases? Models order and line-item grain separately so counts don't inflate, with CTEs and LAG() for month-over-month change. Includes automated tests.</p>
+        <p class="case__stack">SQL (SQLite), Python</p>
+      </article>
+      <article class="minor__item">
+        <h3 class="minor__title"><a href="https://github.com/chaman-23/csv-quality-audit">CSV Quality Audit</a></h3>
+        <p>Is this dataset fit to report on? Flags missing values, duplicates and type errors against a data contract. Includes automated tests.</p>
+        <p class="case__stack">Python</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section wrap" id="experience" aria-labelledby="expH">
+  <p class="fig">Fig. 3</p>
+  <div>
+    <h2 id="expH" class="h2">Experience</h2>
+    <ol class="timeline">
+      <li>
+        <p class="timeline__when">2026</p>
+        <h3 class="timeline__role">Business Analyst, IHRO India <span class="muted">(NGO), Delhi</span></h3>
+        <ul>
+          <li>Documented AS-IS and TO-BE grievance-handling flows and wrote a BRD with case categories, escalation rules and reporting fields for the technical team.</li>
+          <li>Led a root cause analysis of declining membership renewals and presented a prioritised action plan to leadership.</li>
+          <li>Analysed website and social data in Google Analytics 4 and Search Console, finding drop-off points and a JavaScript rendering issue limiting organic reach.</li>
+        </ul>
+      </li>
+      <li>
+        <p class="timeline__when">2025</p>
+        <h3 class="timeline__role">Co-Founder &amp; Business Lead, SmartHomie <span class="muted">Parul University Incubation Program</span></h3>
+        <ul>
+          <li>Ran primary market research with 100+ respondents and built the financial projections and pitch that secured ₹1.4 lakh in grant funding.</li>
+          <li>Ran requirement sessions with early users and prioritised the product backlog.</li>
+        </ul>
+      </li>
+      <li>
+        <p class="timeline__when">2023–2024</p>
+        <h3 class="timeline__role">Student Placement Coordinator, Parul University</h3>
+        <ul>
+          <li>Managed placement communication for 200+ students and coordinated with recruiters.</li>
+        </ul>
+      </li>
+    </ol>
   </div>
 </section>
 
 <!-- SKILLS -->
-<section id="skills">
-  <div class="sec-eyebrow">Toolkit</div>
-  <h2 class="sec-title reveal">Skills &amp; <em>Expertise</em></h2>
+<section class="section wrap" id="skills" aria-labelledby="skillsH">
+  <p class="fig">Fig. 4</p>
+  <div>
+    <h2 id="skillsH" class="h2">Skills</h2>
+    <dl class="skills">
+      <div><dt>Querying &amp; programming</dt><dd>SQL (MySQL, SQLite, BigQuery, window functions, CTEs), Python (Pandas, NumPy, scikit-learn)</dd></div>
+      <div><dt>Analytics &amp; BI</dt><dd>Power BI (DAX), Excel (pivot tables, VLOOKUP), Google Analytics 4, KPI reporting, data cleaning and validation</dd></div>
+      <div><dt>Business analysis</dt><dd>Requirements gathering, BRD writing, AS-IS / TO-BE mapping, gap analysis, root cause analysis, stakeholder management</dd></div>
+      <div><dt>Delivery &amp; tools</dt><dd>Agile / Scrum, Jira, Lucidchart, Git, Microsoft 365</dd></div>
+    </dl>
 
-  <div class="skills-layout">
-    <p class="skills-intro reveal">
-      A curated stack built for the full analytics lifecycle — from raw data wrangling to polished interactive dashboards and predictive models.
-    </p>
-    <div></div>
-  </div>
-
-  <div class="skills-grid reveal">
-    <div class="skill-item">
-      <span class="skill-num">01</span>
-      <div>
-        <div class="skill-name">Python</div>
-        <div class="skill-desc">Pandas, NumPy, Matplotlib & Seaborn for data cleaning, transformation and EDA.</div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <span class="skill-num">02</span>
-      <div>
-        <div class="skill-name">Power BI</div>
-        <div class="skill-desc">DAX measures, interactive dashboards, slicers, drill-throughs and report publishing.</div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <span class="skill-num">03</span>
-      <div>
-        <div class="skill-name">SQL</div>
-        <div class="skill-desc">Complex joins, subqueries, window functions, stored procedures and query optimisation.</div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <span class="skill-num">04</span>
-      <div>
-        <div class="skill-name">Excel &amp; Advanced Excel</div>
-        <div class="skill-desc">Pivot tables, VLOOKUP/XLOOKUP, Power Query, macros and dynamic charts.</div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <span class="skill-num">05</span>
-      <div>
-        <div class="skill-name">ML Basics</div>
-        <div class="skill-desc">Scikit-learn regression, classification, model evaluation and feature engineering.</div>
-      </div>
-    </div>
-    <div class="skill-item">
-      <span class="skill-num">06</span>
-      <div>
-        <div class="skill-name">Data Storytelling</div>
-        <div class="skill-desc">Translating complex findings into clear, compelling narratives for stakeholders.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="sec-eyebrow">Work</div>
-  <h2 class="sec-title reveal">Featured <em>Projects</em></h2>
-
-  <div class="projects-list reveal">
-
-    <!-- P1 -->
-    <div class="project-row">
-      <div class="proj-num-col">
-        <span class="proj-number">001</span>
-      </div>
-      <div class="proj-body">
-        <div class="proj-tags">
-          <span class="proj-tag">Python</span>
-          <span class="proj-tag">Power BI</span>
-          <span class="proj-tag">SQL</span>
-        </div>
-        <h3 class="proj-title">E-Commerce Sales Dashboard</h3>
-        <p class="proj-desc">End-to-end analytics pipeline for a 50K+ transaction dataset. Cleaned and transformed data with Pandas, modelled it in SQL, and built an 8-panel Power BI dashboard surfacing revenue trends, top-SKU performance, regional split and customer segmentation. Identified a 23% uplift opportunity in one under-served region.</p>
-      </div>
-      <div class="proj-metrics-col">
-        <div class="p-metric">
-          <span class="p-metric-val">50K+</span>
-          <span class="p-metric-name">Records</span>
-        </div>
-        <div class="p-metric">
-          <span class="p-metric-val">8</span>
-          <span class="p-metric-name">Dashboards</span>
-        </div>
-        <div class="p-metric">
-          <span class="p-metric-val">23%</span>
-          <span class="p-metric-name">Insight</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- P2 -->
-    <div class="project-row">
-      <div class="proj-num-col">
-        <span class="proj-number">002</span>
-      </div>
-      <div class="proj-body">
-        <div class="proj-tags">
-          <span class="proj-tag green">Python</span>
-          <span class="proj-tag green">Scikit-learn</span>
-          <span class="proj-tag green">ML</span>
-        </div>
-        <h3 class="proj-title">House Price Prediction Model</h3>
-        <p class="proj-desc">Regression model built on the Ames Housing dataset with 80+ features. Applied feature engineering, handled missing values systematically, and benchmarked Linear Regression vs Decision Tree vs Random Forest. Achieved 91% R² accuracy with Random Forest after hyperparameter tuning. Deployed as a lightweight interactive notebook with explanations for non-technical stakeholders.</p>
-      </div>
-      <div class="proj-metrics-col">
-        <div class="p-metric">
-          <span class="p-metric-val">91%</span>
-          <span class="p-metric-name">Accuracy</span>
-        </div>
-        <div class="p-metric">
-          <span class="p-metric-val">3</span>
-          <span class="p-metric-name">Models</span>
-        </div>
-        <div class="p-metric">
-          <span class="p-metric-val">80+</span>
-          <span class="p-metric-name">Features</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- P3 -->
-    <div class="project-row">
-      <div class="proj-num-col">
-        <span class="proj-number">003</span>
-      </div>
-      <div class="proj-body">
-        <div class="proj-tags">
-          <span class="proj-tag amber">SQL</span>
-          <span class="proj-tag amber">Advanced Excel</span>
-          <span class="proj-tag amber">Power BI</span>
-        </div>
-        <h3 class="proj-title">HR Attrition Analysis</h3>
-        <p class="proj-desc">Deep-dived into the IBM HR Analytics dataset (1,470 employees, 35 variables) to uncover the primary drivers of churn. Used SQL for aggregation, Advanced Excel for modelling attrition rates by department and salary band, and Power BI for the executive report. Delivered five actionable retention recommendations including a targeted intervention for the Sales department where attrition was 2.4× the company average.</p>
-      </div>
-      <div class="proj-metrics-col">
-        <div class="p-metric">
-          <span class="p-metric-val">1,470</span>
-          <span class="p-metric-name">Employees</span>
-        </div>
-        <div class="p-metric">
-          <span class="p-metric-val">35</span>
-          <span class="p-metric-name">Variables</span>
-        </div>
-        <div class="p-metric">
-          <span class="p-metric-val">5</span>
-          <span class="p-metric-name">Insights</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="sec-eyebrow">Profile</div>
-  <h2 class="sec-title reveal">About <em>Chaman</em></h2>
-
-  <div class="about-grid">
-    <div class="about-body reveal">
-      <p>I'm a BCA graduate with a genuine curiosity for what data reveals about the world. Whether it's a messy CSV or a multi-table database, I enjoy the process of finding the signal in the noise and translating it into something a stakeholder can actually act on.</p>
-      <blockquote>"Data is only valuable when it drives a decision."</blockquote>
-      <p>My toolkit spans the full analytics pipeline — data ingestion and cleaning in Python and SQL, exploratory analysis, building predictive models with Scikit-learn, and communicating findings through clear Power BI dashboards and well-structured Excel models.</p>
-      <p>I'm actively seeking my first data analyst role where I can contribute immediately while continuing to grow. I thrive in collaborative environments and love working on problems that have a tangible business impact.</p>
-    </div>
-
-    <div class="about-sidebar reveal">
-      <div class="about-row">
-        <span class="ar-key">Degree</span>
-        <span class="ar-val">Bachelor of Computer Applications</span>
-      </div>
-      <div class="about-row">
-        <span class="ar-key">Graduation</span>
-        <span class="ar-val">2026</span>
-      </div>
-      <div class="about-row">
-        <span class="ar-key">CGPA</span>
-        <span class="ar-val">7.3 / 10.0</span>
-      </div>
-      <div class="about-row">
-        <span class="ar-key">Phone</span>
-        <span class="ar-val">+91 9310354163</span>
-      </div>
-      <div class="about-row">
-        <span class="ar-key">LinkedIn</span>
-        <span class="ar-val"><a href="https://linkedin.com/in/chaman-singh-5a67aa2b6" target="_blank">View Profile ↗</a></span>
-      </div>
-      <div class="about-row">
-        <span class="ar-key">Focus Area</span>
-        <span class="ar-val">Data Analytics · Business Intelligence</span>
-      </div>
-      <div class="about-row">
-        <span class="ar-key">Status</span>
-        <span class="ar-val open">● Open to Work</span>
-      </div>
-    </div>
+    <h2 class="h2 h2--sub">Education &amp; certification</h2>
+    <dl class="edu">
+      <div><dt>MCA, IIT Patna (online)</dt><dd>Expected April 2028</dd></div>
+      <div><dt>BCA, Cloud Computing, minor in AI · Parul University, Vadodara</dt><dd>CGPA 7.36 / 10</dd></div>
+      <div><dt>Microsoft Certified: Power BI Data Analyst Associate (PL-300)</dt><dd>Certification</dd></div>
+    </dl>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
-  <div class="sec-eyebrow">Connect</div>
-  <h2 class="sec-title reveal">Let's <em>Talk</em></h2>
-
-  <div class="contact-body">
-    <p class="contact-text reveal">Open to data analyst positions, internships, and freelance analytics projects. If you have a data problem that needs solving — or just want to connect — reach out through any of the channels below.</p>
-
-    <div class="contact-buttons reveal">
-      <a href="tel:+919310354163" class="contact-link">
-        <div class="contact-link-icon">📞</div>
-        <div>
-          <div class="contact-link-label">Phone</div>
-          <div class="contact-link-val">+91 9310354163</div>
-        </div>
-      </a>
-      <a href="https://linkedin.com/in/chaman-singh-5a67aa2b6" target="_blank" class="contact-link">
-        <div class="contact-link-icon">💼</div>
-        <div>
-          <div class="contact-link-label">LinkedIn</div>
-          <div class="contact-link-val">chaman-singh-5a67aa2b6</div>
-        </div>
-      </a>
+<section class="section wrap contact" id="contact" aria-labelledby="contactH">
+  <p class="fig">Fig. 5</p>
+  <div>
+    <h2 id="contactH" class="contact__h">Let's talk about data.</h2>
+    <p class="contact__lede">I'm looking for Data Analyst, Business Analyst and BI roles. Email is the quickest way to reach me.</p>
+    <div class="contact__row">
+      <button class="btn btn--solid" id="copyEmail" type="button" data-email="rudra23032004@gmail.com">Copy email address</button>
+      <a class="btn btn--line" href="mailto:rudra23032004@gmail.com">rudra23032004@gmail.com</a>
     </div>
+    <p class="toast" id="toast" role="status" aria-live="polite"></p>
+    <ul class="contact__links">
+      <li><a href="https://www.linkedin.com/in/chaman-singh-5a67aa2b6">LinkedIn</a></li>
+      <li><a href="https://github.com/chaman-23">GitHub</a></li>
+      <li><a href="resume/Chaman_Singh_Resume.pdf" download>Resume (PDF)</a></li>
+    </ul>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <span>© 2024 Chaman Singh</span>
-  <span>Data Analyst · BCA Graduate · Open to Opportunities</span>
+</main>
+
+<footer class="foot wrap">
+  <p>© 2026 Chaman Kumar Singh, New Delhi</p>
+  <a href="#top">Back to top</a>
 </footer>
 
-<script>
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 90);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  revealEls.forEach(el => obs.observe(el));
-
-  // CGPA bar
-  const cgpaObs = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-      document.getElementById('cgpaBar').style.width = '73%';
-      cgpaObs.disconnect();
-    }
-  }, { threshold: 0.5 });
-  const bar = document.getElementById('cgpaBar');
-  if (bar) cgpaObs.observe(bar);
-</script>
+<script src="main.js" defer></script>
 </body>
 </html>
